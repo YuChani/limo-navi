@@ -63,11 +63,10 @@ RUN apt update && apt install -y \
 RUN echo "source /opt/ros/noetic/setup.bash" >> /root/.bashrc
 RUN rosdep init && rosdep update
 
-# 6. GitHub에서 catkin_ws clone 후 정리하여 복사
+# 6. GitHub에서 catkin_ws clone 후 정리 (삭제 안 함!)
 RUN mkdir -p /root/catkin_ws \
-    && git clone https://github.com/YuChani/limodocker_ws.git /tmp/limodocker_ws \
-    && cp -r /tmp/limodocker_ws/* /root/catkin_ws/ \
-    && rm -rf /tmp/limodocker_ws \
+    && git clone https://github.com/YuChani/limo-navi.git /tmp/limo_ws \
+    && cp -r /tmp/limo_ws/* /root/catkin_ws/ \
     && /bin/bash -c "source /opt/ros/noetic/setup.bash && rosdep install --from-paths /root/catkin_ws/src --ignore-src -r -y || true" \
     && /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make -C /root/catkin_ws"
 

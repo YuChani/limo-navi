@@ -4,6 +4,9 @@
 # Build
 build/
 
+# devel
+devel/
+
 # Prerequisites
 *.d
 

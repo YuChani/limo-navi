@@ -57,6 +57,10 @@ RUN apt update && apt install -y \
     ros-noetic-joint-state-publisher-gui \
     ros-noetic-rqt-robot-steering \
     ros-noetic-teleop-twist-keyboard \
+    ros-noetic-turtlebot3-msgs \ 
+    ros-noetic-turtlebot3-description \
+    ros-noetic-turtlebot3-gazebo \
+    ros-noetic-turtlebot3-navigation \
     && rm -rf /var/lib/apt/lists/*
 
 # 5. ROS 환경 설정 및 rosdep 초기화
@@ -66,9 +70,8 @@ RUN rosdep init && rosdep update
 # 6. GitHub에서 catkin_ws clone 후 정리 (삭제 안 함!)
 RUN mkdir -p /root/catkin_ws \
     && git clone https://github.com/YuChani/limo-navi.git /tmp/limo_ws \
-    && cp -r /tmp/limo_ws/* /root/catkin_ws/ \
-    && /bin/bash -c "source /opt/ros/noetic/setup.bash && rosdep install --from-paths /root/catkin_ws/src --ignore-src -r -y || true" \
-    && /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make -C /root/catkin_ws"
+    && cp -a /tmp/limo_ws/. /root/catkin_ws/ \
+    && /bin/bash -c "source /opt/ros/noetic/setup.bash && rosdep install --from-paths /root/catkin_ws/src --ignore-src -r -y || true"
 
 # 7. ROS 워크스페이스 자동 로딩
 RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc

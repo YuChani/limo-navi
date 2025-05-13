@@ -19,7 +19,7 @@ obstacle_layer:
 
 inflation_layer:
   inflation_radius:     0.15
-  cost_scaling_factor: 0.5
+  cost_scaling_factor: 1.5
 
 static_layer:
   map_topic:            "/map"

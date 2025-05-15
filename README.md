@@ -1,15 +1,15 @@
 # KWU Internship Cpp
 
 ```bash
-__RUN limo gazebo__
+# RUN limo gazebo
 
 roslaunch limo_gazebo_sim limo_four_diff.launch
 
-__MAKE map__
+# MAKE map
 
 roslaunch turtlebot3_slam turtlebot3_slam.launch 
 
-__RUN limo navigation__
+# RUN limo navigation
 
 roslaunch turtlebot3_navigation turtlebot3_navigation.launch 
 ```
